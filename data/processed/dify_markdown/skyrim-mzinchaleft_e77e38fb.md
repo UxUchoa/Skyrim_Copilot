@@ -1,0 +1,161 @@
+---
+source_url: "https://en.uesp.net/wiki/Skyrim:Mzinchaleft"
+title: "Skyrim:Mzinchaleft"
+entity_type: "location"
+namespace: "Skyrim"
+retrieved_at: "2026-05-05T00:01:05.655299+00:00"
+tags: ["MetaTemplate-Load", "Skyrim-Bugs Fixed by the Unofficial Skyrim Legendary Edition Patch", "Skyrim-Bugs Fixed by the Unofficial Skyrim Patch", "Skyrim-Confirmed Bugs", "Skyrim-Places", "Skyrim-Places-Clearable", "Skyrim-Places-Cooking Pots", "Skyrim-Places-Discoverable", "Skyrim-Places-Dwarven Automaton Sites", "Skyrim-Places-Dwarven Ruins", "Skyrim-Places-Hjaalmarch", "Skyrim-Unconfirmed Bugs"]
+---
+
+# Skyrim:Mzinchaleft
+
+## Overview
+
+|  |  |  |  |
+| --- | --- | --- | --- |
+| |  |  | | --- | --- | | [SR-mapicon-Dwemer.png](/wiki/File:SR-mapicon-Dwemer.png) | Dwarven Ruin: Mzinchaleft ([view on map](https://gamemap.uesp.net/sr/?world=Skyrim&centeron=Mzinchaleft)) ([lore page](/wiki/Lore:Mzinchaleft "Lore:Mzinchaleft")) | | |
+| # of Zones | 3 |
+| [Clearable](/wiki/Skyrim:Dungeons#Clearing "Skyrim:Dungeons") | Yes |
+| [Dungeon](/wiki/Skyrim:Dungeons "Skyrim:Dungeons") | Yes |
+| [Respawn Time](/wiki/Skyrim:Respawn "Skyrim:Respawn") | 10 days or 30 days |
+| [Level](/wiki/Skyrim:Encounter_Zone_Level "Skyrim:Encounter Zone Level") | Min: 16 |
+| Occupants | |
+| [Bandits](/wiki/Skyrim:Bandit "Skyrim:Bandit"), [Dwarven Automatons](/wiki/Skyrim:Dwarven_Automatons "Skyrim:Dwarven Automatons"), [Falmer](/wiki/Skyrim:Falmer "Skyrim:Falmer"), [Chaurus](/wiki/Skyrim:Chaurus "Skyrim:Chaurus") | |
+| Important Treasure | |
+| *[A Dance in Fire, v7](/wiki/Skyrim:A_Dance_in_Fire,_v7 "Skyrim:A Dance in Fire, v7")* [Grimsever](/wiki/Skyrim:Grimsever "Skyrim:Grimsever") | |
+| Console Location Code(s) | |
+| MzinchaleftExterior, Mzinchaleft01, Mzinchaleft02, Mzinchaleft03 | |
+| Region | |
+| [Hjaalmarch](/wiki/Skyrim:Hjaalmarch "Skyrim:Hjaalmarch") | |
+| Location | |
+| Southwest of [Dawnstar](/wiki/Skyrim:Dawnstar "Skyrim:Dawnstar") North of [Frostmere Crypt](/wiki/Skyrim:Frostmere_Crypt "Skyrim:Frostmere Crypt") | |
+| Special Features | |
+| # of [Cooking Pots/Spits](/wiki/Skyrim:Cooking "Skyrim:Cooking") | 1 |
+
+[![](//images.uesp.net/thumb/2/26/SR-place-Mzinchaleft.jpg/200px-SR-place-Mzinchaleft.jpg)](/wiki/File:SR-place-Mzinchaleft.jpg)
+
+Mzinchaleft
+
+**Mzinchaleft** is a medium-sized [Dwarven ruin](/wiki/Skyrim:Dwarven_Ruins "Skyrim:Dwarven Ruins") southwest of [Dawnstar](/wiki/Skyrim:Dawnstar "Skyrim:Dawnstar") containing [bandits](/wiki/Skyrim:Bandit "Skyrim:Bandit"), [Dwarven automatons](/wiki/Skyrim:Dwarven_Automatons "Skyrim:Dwarven Automatons"), [Falmer](/wiki/Skyrim:Falmer "Skyrim:Falmer"), and [chaurus](/wiki/Skyrim:Chaurus "Skyrim:Chaurus"). It contains three zones: *[Mzinchaleft](#Mzinchaleft)*, *[Mzinchaleft Depths](#Mzinchaleft_Depths)*, and *[Mzinchaleft Gatehouse](#Mzinchaleft_Gatehouse)*.
+
+Mzinchaleft is one of only three sites that provide initial access to [Blackreach](/wiki/Skyrim:Blackreach "Skyrim:Blackreach").
+
+## Related Quests
+
+- **[Grimsever's Return](/wiki/Skyrim:Grimsever%27s_Return "Skyrim:Grimsever's Return")**: Recover [Mjoll](/wiki/Skyrim:Mjoll_the_Lioness "Skyrim:Mjoll the Lioness")'s beloved sword, [Grimsever](/wiki/Skyrim:Grimsever "Skyrim:Grimsever"), from Mzinchaleft.
+- **[Kill Maluril](/wiki/Skyrim:Kill_Maluril "Skyrim:Kill Maluril")**: Kill [Maluril](/wiki/Skyrim:Maluril "Skyrim:Maluril") in Mzinchaleft.
+
+### Exterior
+
+[![](//images.uesp.net/thumb/0/0a/SR-place-Mzinchaleft_02.jpg/200px-SR-place-Mzinchaleft_02.jpg)](/wiki/File:SR-place-Mzinchaleft_02.jpg)
+
+Exterior campfire
+
+Upon approaching the ruin, you will see two long roofs with a pair of towers behind. In the middle of the nearest building is a small wooden structure with a bandit standing guard at the top. To the right of this is a doorway that leads into a covered corridor. Partway along it, on your left, is a wooden table with a mead barrel, an [iron sword](/wiki/Skyrim:Iron_Sword "Skyrim:Iron Sword"), a [goat cheese wedge](/wiki/Skyrim:Goat_Cheese_Wedge "Skyrim:Goat Cheese Wedge"), and a [sliced goat cheese](/wiki/Skyrim:Sliced_Goat_Cheese "Skyrim:Sliced Goat Cheese"). Past the table, the corridor opens into an uncovered corridor with a table halfway along it, at which a bandit is seated. There are several boxes and crates along this corridor, and an unlocked [chest](/wiki/Skyrim:Chest "Skyrim:Chest") behind where the bandit is seated. On your left are two doorways leading to the same covered corridor, with a couple barrels and a bedroll in the corner. At the other end is a table with a [woodcutter's axe](/wiki/Skyrim:Woodcutter%27s_Axe "Skyrim:Woodcutter's Axe") and a written [work order](/wiki/Skyrim:Mzinchaleft_Work_Order "Skyrim:Mzinchaleft Work Order"). Above this is a rack with a [rabbit](/wiki/Skyrim:Rabbit_(dead) "Skyrim:Rabbit (dead)") hanging from it and a [pheasant](/wiki/Skyrim:Pheasant "Skyrim:Pheasant") lying on the ground below.
+
+To the left of this is a doorway back out into the inner area, with ramps leading up to two separate towers and stairs leading down to the main entrance. In front of you is a fire with a [cooking pot](/wiki/Skyrim:Cooking_Pot "Skyrim:Cooking Pot") and a spit hanging over it, beside which is another bandit sitting on a chair. Behind the spit, on top of a barrel and a table, rest a couple sacks. To the right is the start of a ramp with a covered area that contains a bedroll and a couple food barrels. At the top of the ramp is another covered tower with a table, on top of which lies an [iron helmet](/wiki/Skyrim:Iron_Helmet "Skyrim:Iron Helmet") and a bow of leveled quality (up to [elven](/wiki/Skyrim:Elven_Bow "Skyrim:Elven Bow")).
+
+Turning to the left in front of the fire, you can either take the stairs down or walk around to another ramp. Choosing the latter, you will pass on your left a lean-to with a bedroll, an [iron mace](/wiki/Skyrim:Iron_Mace "Skyrim:Iron Mace"), and an [iron shield](/wiki/Skyrim:Iron_Shield "Skyrim:Iron Shield") under it. This ramp leads to the second tower and another covered area containing two more food barrels and an adept-locked chest. Taking the stairs down, you will come to the main entrance, to the right of which are eight [iron arrows](/wiki/Skyrim:Iron_Arrow "Skyrim:Iron Arrow") (seven stacked in a quiver, one by itself) lying on a crate. There are three more bandits around the exterior who will all come running once battle is joined.
+
+### Mzinchaleft
+
+[![](//images.uesp.net/thumb/9/97/SR-interior-Mzinchaleft.jpg/200px-SR-interior-Mzinchaleft.jpg)](/wiki/File:SR-interior-Mzinchaleft.jpg)
+
+Interior campfire
+
+Upon entering, you are in a dimly lit corridor descending to the north. At the first turn, you will find the remains of two [Dwarven spiders](/wiki/Skyrim:Dwarven_Spider "Skyrim:Dwarven Spider") and two carts: one filled with Dwemer-style shelving units, and the other with a load of four [Dwemer cogs](/wiki/Skyrim:Dwemer_Cog "Skyrim:Dwemer Cog") scattered nearby. The path continues descending to the east. At the bottom, where the corridor turns to the north again, are the remains of a [Dwarven sphere](/wiki/Skyrim:Dwarven_Sphere "Skyrim:Dwarven Sphere"). As you proceed, you will overhear two bandits talking. They are just around the next corner standing on either side of a firepit with an empty pot hanging over it. To the right of the fire is a wooden block with a woodcutter's axe on top. Hanging from a rack above is a pheasant and a [garlic braid](/wiki/Skyrim:Garlic_Braid "Skyrim:Garlic Braid"). To the left of the fire is another empty pot with a plate holding a [leg of goat roast](/wiki/Skyrim:Leg_of_Goat_Roast "Skyrim:Leg of Goat Roast") with a [potato](/wiki/Skyrim:Potato "Skyrim:Potato") beside it. On your left as you approach the fire is a round wooden table holding a bowl of [vegetable soup](/wiki/Skyrim:Vegetable_Soup "Skyrim:Vegetable Soup"), a [carrot](/wiki/Skyrim:Carrot "Skyrim:Carrot"), two [slaughterfish eggs](/wiki/Skyrim:Slaughterfish_Egg "Skyrim:Slaughterfish Egg"), a [stamina poison](/wiki/Skyrim:Stamina_Poison "Skyrim:Stamina Poison"), and a [vigor poison](/wiki/Skyrim:Vigor_Poison "Skyrim:Vigor Poison"). Beside the table is an open gate leading to a small area with two bedrolls, an unlocked chest, a random [healing](/wiki/Skyrim:Healing "Skyrim:Healing") potion, and a bucket containing a [taproot](/wiki/Skyrim:Taproot "Skyrim:Taproot"), a [red apple](/wiki/Skyrim:Red_Apple "Skyrim:Red Apple"), a [green apple](/wiki/Skyrim:Green_Apple "Skyrim:Green Apple"), and a potato.
+
+Past this camp, the corridor turns again to the north, continues for a few feet, then turns to the west and descends again. Take care, as there is a bandit patrolling up to this corner, where the remains of a Dwarven sphere also lie by a pillar. At the bottom of this ramp is an opening on the right, where two bandits are standing. They have made a campfire there, with a cauldron sitting in the flames. Around the room are two long wooden tables, two food barrels, an unlocked chest, and an archery target. On the left-hand table is a set of [fur armor](/wiki/Skyrim:Fur_Armor "Skyrim:Fur Armor"), an iron mace, an iron helmet, and two random [magicka](/wiki/Skyrim:Magicka "Skyrim:Magicka") potions. On the right-hand table is a pair of [fur bracers](/wiki/Skyrim:Fur_Bracers "Skyrim:Fur Bracers"), a [helmet](/wiki/Skyrim:Fur_Helmet "Skyrim:Fur Helmet"), a goat cheese wedge, and a loaf of [bread](/wiki/Skyrim:Bread "Skyrim:Bread"), with a pair of [fur shoes](/wiki/Skyrim:Fur_Shoes "Skyrim:Fur Shoes") under the table. One of the barrels has a [leek](/wiki/Skyrim:Leek "Skyrim:Leek") on top.
+
+[![](//images.uesp.net/thumb/8/89/SR-interior-Mzinchaleft_02.jpg/200px-SR-interior-Mzinchaleft_02.jpg)](/wiki/File:SR-interior-Mzinchaleft_02.jpg)
+
+Maluril
+
+The corridor continues past this opening and ends at a junction. To the right (north) is an adept-locked door with a leveled bandit standing guard. The guard carries a [key](/wiki/Skyrim:Maluril%27s_Room_Key "Skyrim:Maluril's Room Key") that opens this door. Through the door, you can follow the path behind a wall to a sleeping area with four single stone beds. This is where you will find [Maluril](/wiki/Skyrim:Maluril "Skyrim:Maluril") if you have received the relevant [quest](/wiki/Skyrim:Kill_Maluril "Skyrim:Kill Maluril"). At the far end is an unlocked chest, with a table to the right. On the table rest the remains of a Dwarven spider, two Dwemer cogs, a leveled magicka potion, a leveled healing potion, a flask of [Dwarven oil](/wiki/Skyrim:Dwarven_Oil "Skyrim:Dwarven Oil"), a [ruined book](/wiki/Skyrim:Ruined_Book "Skyrim:Ruined Book") (see [bugs](#Bugs)), a [Dwemer bowl](/wiki/Skyrim:Dwemer_Bowl "Skyrim:Dwemer Bowl"), and [Maluril's journal](/wiki/Skyrim:Maluril%27s_Journal "Skyrim:Maluril's Journal"). Opposite, on a stone table, is a copy of the [speech](/wiki/Skyrim:Speech "Skyrim:Speech") [skill book](/wiki/Skyrim:Skill_Books "Skyrim:Skill Books") *[A Dance in Fire, v7](/wiki/Skyrim:A_Dance_in_Fire,_v7 "Skyrim:A Dance in Fire, v7")*.
+
+[![](//images.uesp.net/thumb/d/df/SR-interior-Mzinchaleft_03.jpg/200px-SR-interior-Mzinchaleft_03.jpg)](/wiki/File:SR-interior-Mzinchaleft_03.jpg)
+
+Bandits and automatons fighting
+
+To the south at the previous junction are the remains of a Dwarven sphere at the top of a ramp leading down to a closed gate. You can hear fighting through the gate, and will see bandits and automatons fighting. Through the gate is a room with a raised walkway around most of the room, with two flights of stairs up to the two sections. Initially, there are two bandits and two leveled Dwarven spheres in the central area, and two more bandits on either raised walkway. Defeat any remaining enemies before exploring.
+
+There is an open door diagonally opposite. On the right-hand raised area is a Dwemer dresser with a few items and an empty Dwemer chest. The corridor leading from this room continues for a few feet, passing a couple sets of shelves and stone benches, then turns to the west. Along here by a broken piece of metalwork on the right is a Dwemer bowl. The corridor then opens out again, and in front of you at the next corner is a Dwarven spider. At this point, the corridor turns to the north, then back to the west almost immediately. To the north is a closed gate, behind which are the remains of a [Dwarven centurion](/wiki/Skyrim:Dwarven_Centurion "Skyrim:Dwarven Centurion") that can be looted for the all-important [centurion dynamo core](/wiki/Skyrim:Centurion_Dynamo_Core "Skyrim:Centurion Dynamo Core").
+
+Continuing along the corridor to the west, you will pass a broken pipe in the middle of the pathway. On either side of the broken pipe are gates, the one on the left being open, but neither of the corresponding alcoves holds anything of importance. Farther on is a second pair of gates. The one on the right is open, and there is a [Dwemer gyro](/wiki/Skyrim:Dwemer_Gyro "Skyrim:Dwemer Gyro") behind it. The one on the left is adept-locked, and hides an unlocked Dwemer chest. As you approach the second pair of gates, a Dwarven spider will drop from a [scuttle](/wiki/Skyrim:Dwarven_Scuttle "Skyrim:Dwarven Scuttle") in front of you and start roaming. Before reaching the corner, you will pass an overturned set of shelves on the left that contains various metal items. The corridor turns to the north again. Through the open gates in front of you is a stone table holding a gyro, two [plates](/wiki/Skyrim:Dwemer_Plate "Skyrim:Dwemer Plate"), and two [cups](/wiki/Skyrim:Dwemer_Cup "Skyrim:Dwemer Cup"). There is a metal chair by the table, and a metal bench to the right, beside a set of shelves. The corridor turns back to the west. As you continue, you will see three scuttles along this stretch of corridor, with a fourth ahead at the next corner. A leveled Dwarven sphere will drop from the fourth scuttle. At this corner, the corridor turns to the north, then passes through a doorway at the top of the stairs into the next room.
+
+[![](//images.uesp.net/thumb/6/62/SR-interior-Mzinchaleft_04.jpg/200px-SR-interior-Mzinchaleft_04.jpg)](/wiki/File:SR-interior-Mzinchaleft_04.jpg)
+
+Lever puzzle
+
+There are two horizontal pipes on the left, and another leveled Dwarven sphere patrolling at the bottom, with the possibility of a second dropping from a scuttle. Once you have dealt with the sphere(s), you can descend the stairs and walk along the pipes on the left to reach an unlocked Dwemer chest. At the bottom of the stairs, the room opens to the right. There are the remains of a Dwarven sphere and various pieces of metal around the room. There are closed gates to the east that lead into the next room. In the next room, around the corner, is a lever that operates a set of spears as part of a puzzle you need to solve to proceed. The puzzle comprises six sections separated by raised spears in two parallel lines:
+
+|  |  |
+| --- | --- |
+| 6 | 5 |
+| 4 | 3 |
+| 2 | 1 |
+
+The order to activate the levers is as follows: 1, 2, 4, 2, 3, 5, 3, 2, 6. The sixth area has a red valve instead, and holds two Dwemer chests of different styles: a small unlocked chest, and a long master-locked chest. The valve lowers all of the spears simultaneously, allowing access onward. Once past the puzzle, there is a door to the south that opens to reveal a lift that takes you to *Mzinchaleft Depths*.
+
+### Mzinchaleft Depths
+
+[![](//images.uesp.net/thumb/b/b9/SR-interior-Mzinchaleft_05.jpg/200px-SR-interior-Mzinchaleft_05.jpg)](/wiki/File:SR-interior-Mzinchaleft_05.jpg)
+
+Flooded area
+
+After descending in the lift, you emerge in a dimly lit corridor with the remains of a Dwarven spider and a dead Falmer on the ground before a door. Through the door is a raised walkway heading north above a large flooded area. The path splits ahead. To the west, it ends after a few dozen feet at a Falmer tent, with a Falmer guarding this path. Turning east leads to another Falmer standing by a lit tower, where a junction has paths leading south and continuing east. There is a [Falmer sword](/wiki/Skyrim:Falmer_Sword "Skyrim:Falmer Sword") on your right. To the south is a building guarded by a [chaurus](/wiki/Skyrim:Chaurus "Skyrim:Chaurus") that is covered with cobwebs, with plenty of [chaurus egg sacs](/wiki/Skyrim:Egg_Sac "Skyrim:Egg Sac"), several [glowing mushrooms](/wiki/Skyrim:Glowing_Mushroom "Skyrim:Glowing Mushroom"), and an unlocked chest in the back corner.
+
+Heading east leads to an open area with a Falmer tent in front of you, with a [Falmer hive](/wiki/Skyrim:Falmer_Hive "Skyrim:Falmer Hive") to its left from which a Falmer emerges as you approach. From here, you can turn left or right and descend stairways to the flooded section. Turning left leads past a door to the right leading deeper into the ruin to an area with more Falmer; on your right as you turn the corner is another hive with another Falmer hiding inside. To the left of this hive is a stone table with two chaurus eggs, a [Falmer bow](/wiki/Skyrim:Falmer_Bow "Skyrim:Falmer Bow"), and three Dwemer cogs on top. At the far end is a Falmer tent, and in the corner is another hive with another Falmer inside.
+
+Once the Falmer are all dispatched, you are free to explore the remainder of the room. Return to the central junction on the walkway and face north. Using [Whirlwind Sprint](/wiki/Skyrim:Whirlwind_Sprint "Skyrim:Whirlwind Sprint"), you can reach an unlocked Dwemer chest. (It is also possible to walk along the ledge to the chest, hugging the wall tightly.) To fully explore the flooded section, you will need a light source and an enchanted [waterbreathing](/wiki/Skyrim:Waterbreathing_(spell) "Skyrim:Waterbreathing (spell)") item or spell. Beneath the chest on the ledge referenced above, in an alcove underwater, is another unlocked chest. Descending the southern stairway and turning left at the bottom, you'll find a closed unlocked gate underwater leading to a living area with a stone table holding a flask of Dwarven oil, and two unlocked chests in a sleeping area beyond. It is also possible to climb near some broken pipes to the north and reach the rooftops, enabling you to snipe one or more Falmer deeper in the ruin.
+
+Through the door heading east is a corridor that almost immediately turns to the south before descending a flight of stairs, turning again to the east, and opening into a room that is arranged like a courtroom, with rows of benches facing a raised section. There are two Falmer in this room: one on the lower level, and the other on the raised section. There are four rows of three benches, with two low walls in front of them. On the other side of the walls are two tables, with a [solid Dwemer metal](/wiki/Skyrim:Solid_Dwemer_Metal "Skyrim:Solid Dwemer Metal") on the table to the right. Climbing the stairs to the raised section, there is a long stone table with three stone chairs behind it facing the rest of the room. On this table are a Dwemer gyro, a [gear](/wiki/Skyrim:Dwemer_Gear "Skyrim:Dwemer Gear"), and a bowl. At the bottom of the stairs to the raised section, in the northeastern corner is a [large decorative Dwemer strut](/wiki/Skyrim:Large_Decorative_Dwemer_Strut "Skyrim:Large Decorative Dwemer Strut"). The exit from the room is behind a wall in the northeast corner.
+
+This leads into a corridor heading north into a tunnel, with a Falmer standing a short way in. The tunnel has many stone pillars supporting it. It turns to the west after a short distance. It then enters a cave, with a [tripwire](/wiki/Skyrim:Tripwire "Skyrim:Tripwire") in the entrance that activates a [claw](/wiki/Skyrim:Claw "Skyrim:Claw") that is hinged on the left. Beyond the claw is a chaurus and a Falmer. The cave behind the claw has a raised section on the left and along the rear wall, with a Falmer tent at either end. Both tents are gated; the tent on the left contains an unlocked Falmer chest, and the tent on the right holds a dead bandit. There are several chaurus egg sacs around the room, with the tunnel exit in the north wall.
+
+[![](//images.uesp.net/thumb/4/42/SR-interior-Mzinchaleft_06.jpg/200px-SR-interior-Mzinchaleft_06.jpg)](/wiki/File:SR-interior-Mzinchaleft_06.jpg)
+
+Falmer camp
+
+After a few feet, the tunnel turns to the west, with three glowing mushrooms growing on the wall at the corner. The tunnel then descends before ending in a gated area. The gate is unlocked, and leads into a courtyard with a central fountain and several Falmer in and around two tents behind. There is also a path up some steps on your left, but this way is blocked by spears. The right-hand tent has an unlocked chest inside, with two more chests outside, one on each side of the tent. To the left is a [Falmer shield](/wiki/Skyrim:Falmer_Shield "Skyrim:Falmer Shield"), and also the start of a curving ramp leading up to the top of a tower.
+
+At the top of the ramp, to the left is an unlocked Falmer gate blocking access to a Falmer and the button to lower the spears blocking the path forward. There are two tables in this small space opposite each other: the left-hand table has a Falmer bow and three [Falmer arrows](/wiki/Skyrim:Falmer_Arrow "Skyrim:Falmer Arrow"), and the right-hand table has two chaurus eggs and a glowing mushroom sample. There is also a walkway joining this tower to a corridor behind an expert-locked gate. Through the gate, the path splits to the left and right. To the right is a table holding an unlocked chest, a flask of Dwarven oil, and a full set of [Falmer armor](/wiki/Skyrim:Falmer_Armor "Skyrim:Falmer Armor"), including a shield beside the table. To the left is a table with an unlocked chest, a [Falmer helmet](/wiki/Skyrim:Falmer_Helmet "Skyrim:Falmer Helmet"), and a flask of Dwarven oil.
+
+Through the previously blocked gateway is another courtyard area with two tents, two Falmer roaming, and a central fountain with an unlocked chest beside it. To the south of the fountain is a Falmer hive with a Falmer hiding inside. To the right of the hive is an adept-locked door to another room containing a large stone table holding the remains of a Dwarven centurion, a centurion dynamo core, two dwemer cogs and various other pieces of metal, and a couple flasks of Dwarven oil. Opposite on another table in this room is an unlocked chest. To the north of the fountain is an open gateway to a long flight of stairs up to a door leading to *Mzinchaleft Gatehouse*, with the remains of a Dwarven sphere, a Dwarven spider, and a dead Falmer at the base of the stairs, and another dead Falmer at the top of the stairs.
+
+### Mzinchaleft Gatehouse
+
+[![](//images.uesp.net/thumb/0/0f/SR-quest-Grimsever%27s_Return.jpg/200px-SR-quest-Grimsever%27s_Return.jpg)](/wiki/File:SR-quest-Grimsever%27s_Return.jpg)
+
+Dwarven centurion and Grimsever
+
+Through the door, you will find yourself in a short corridor that turns to the west a few feet after the door. Around the corner, you can see a Dwarven centurion at a docking station. This is the main boss; however, it is likely that a Dwarven sphere will emerge from a scuttle during your fight. Once they are dealt with, you are free to explore this room. The room has several raised sections in the corners, and to the north is a section blocked by spears. The lever to lower these spears is to the right. Behind the spears is a table with an unlocked chest in front of it. On the table are various metal items, including four cogs, and a dresser holding various metal items.
+
+There is a scuttle on either side of the path between the docking station and the corridor from which you entered the room. In the southwest corner is a gated area, and there are stairs up to the raised area to the northwest. At the top of the stairs is a Dwemer dresser that has been knocked over among some rubble and still contains a few items. From this section, you can traverse some pipes to the east to reach the next raised area. Here you will find a pair of [Dwarven boots](/wiki/Skyrim:Dwarven_Boots "Skyrim:Dwarven Boots"), a [helmet](/wiki/Skyrim:Dwarven_Helmet "Skyrim:Dwarven Helmet"), some Dwarven oil, and various metal items all on a table. There are also more pipes heading south, taking you to the third and final raised section, which has two tables holding a [Dwarven sword](/wiki/Skyrim:Dwarven_Sword "Skyrim:Dwarven Sword") and shield, a [Dwarven metal ingot](/wiki/Skyrim:Dwarven_Metal_Ingot "Skyrim:Dwarven Metal Ingot"), and various metal items. In the gated area in the southwest corner at ground level, there is a Dwarven mechanism which you will only be able to activate with an [Attunement Sphere](/wiki/Skyrim:Attunement_Sphere "Skyrim:Attunement Sphere"). Activating the mechanism reveals a set of stairs leading to an entrance to [Blackreach](/wiki/Skyrim:Blackreach "Skyrim:Blackreach"). To the right of the docking station is a leveled shield and [Grimsever](/wiki/Skyrim:Grimsever "Skyrim:Grimsever").
+
+Behind the docking station is a door that leads to another lift which takes you back to the surface. On the surface, there is a lever on your right to lower the spears blocking your exit. You will emerge to the west of the ruin's main entrance.
+
+## Notes
+
+- The ruin is on the border between [the Pale](/wiki/Skyrim:The_Pale "Skyrim:The Pale") and [Hjaalmarch](/wiki/Skyrim:Hjaalmarch "Skyrim:Hjaalmarch"). It is considered to be in Hjaalmarch by the game and the *[Prima Official Game Guide](/wiki/Books:The_Elder_Scrolls_V:_Skyrim:_Prima_Official_Game_Guide "Books:The Elder Scrolls V: Skyrim: Prima Official Game Guide")*.
+  - ![PC Only](//images.uesp.net/d/d7/Computer.svg "PC Only") The [Unofficial Skyrim Patch](/wiki/Skyrim_Mod:Unofficial_Skyrim_Patch "Skyrim Mod:Unofficial Skyrim Patch"), version 2.1.1, addresses this issue. It has been set to be part of the Pale instead.
+- Maluril will not appear unless the quest [Kill Maluril](/wiki/Skyrim:Kill_Maluril "Skyrim:Kill Maluril") is started but he is mentioned by his guards. His journal will also be in the room but not himself.
+- The ruin is mentioned in unused dialogue for [carriage drivers](/wiki/Skyrim:Transport#Carriage "Skyrim:Transport"), who would have said *"Did you spot the Dwarven ruins up there? Mzinfazzle, Finchafft, Mzinchaleft? Good thing the Dwarves disappeared and stopped naming things."*
+
+## Bugs
+
+- Your follower may be unable to walk up the initial steps into Mzinchaleft's entrance, and thus may be unable to follow you into the ruin. **?**
+  - If you proceed, your follower will eventually be moved inside automatically.
+- Attempting to exit Blackreach to *Mzinchaleft Gatehouse* then immediately returning may cause Blackreach to have normal daylight or even snowy weather like any aboveground area. **?**
+- Grimsever is a one-handed glass sword, though [Mjoll the Lioness](/wiki/Skyrim:Mjoll_the_Lioness "Skyrim:Mjoll the Lioness") is more proficient in two-handed weapons.
+  - ![PC Only](//images.uesp.net/d/d7/Computer.svg "PC Only") The [Unofficial Skyrim Patch](/wiki/Skyrim_Mod:Unofficial_Skyrim_Patch "Skyrim Mod:Unofficial Skyrim Patch"), version 1.2.3, addresses this issue. Grimsever is now a two-handed glass greatsword to match her skills better.
+- The top of one of the towers is sitting too low in its area.
+  - ![PC Only](//images.uesp.net/d/d7/Computer.svg "PC Only") The [Unofficial Skyrim Patch](/wiki/Skyrim_Mod:Unofficial_Skyrim_Patch "Skyrim Mod:Unofficial Skyrim Patch"), version 1.2.4, addresses this issue. A missing section of navmesh has been added to the tower, enabling the NPC stationed there to use the chair during his AI routine.
+- In Maluril's room is a ruined book on the table that will be marked as stolen if taken.
+  - ![PC Only](//images.uesp.net/d/d7/Computer.svg "PC Only") The [Unofficial Skyrim Patch](/wiki/Skyrim_Mod:Unofficial_Skyrim_Patch "Skyrim Mod:Unofficial Skyrim Patch"), version 2.0.0, fixes this bug.
+- In the partially submerged area in *Mzinchaleft Depths*, there is a glitched area behind one of the half-sunken buildings that can be reached by jumping and seam walking. It will appear to be water, but it is outside of the rest of the area. Continuing down will lead to an area that you can breathe in, and further exploration will sometimes cause you to instantaneously pop into other random areas of Mzinchaleft.
+- In the Falmer camp area in *Mzinchaleft Depths*, you can jump up the rubble blocking the doorway and look through the wall behind the Falmer tent as if it were not there. **?**
+- If you finish [Destroy the Dark Brotherhood!](/wiki/Skyrim:Destroy_the_Dark_Brotherhood! "Skyrim:Destroy the Dark Brotherhood!"), Maluril's journal may still be present in Mzinchaleft even though he'll never be here himself.
+  - ![PC Only](//images.uesp.net/d/d7/Computer.svg "PC Only") The [Unofficial Skyrim Legendary Edition Patch](/wiki/Skyrim_Mod:Unofficial_Skyrim_Legendary_Edition_Patch "Skyrim Mod:Unofficial Skyrim Legendary Edition Patch"), version 3.0.3, addresses this issue. His journal will no longer be present if he isn't here.
+- Followers may be unable to keep up with you if entering Blackreach via Mzinchaleft Gatehouse due to an incomplete navmesh.
+  - ![PC Only](//images.uesp.net/d/d7/Computer.svg "PC Only") The [Unofficial Skyrim Legendary Edition Patch](/wiki/Skyrim_Mod:Unofficial_Skyrim_Legendary_Edition_Patch "Skyrim Mod:Unofficial Skyrim Legendary Edition Patch"), version 3.0.4, fixes this bug.
