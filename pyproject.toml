@@ -1,0 +1,26 @@
+[project]
+name = "skyrim-copilot-backend"
+version = "0.1.0"
+description = "Backend data pipeline for building a Skyrim RAG corpus from UESP."
+requires-python = ">=3.11"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "httpx>=0.27",
+    "markdownify>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+build-uesp-corpus = "backend.pipeline.build_uesp_corpus:main"
+
+[tool.setuptools.packages.find]
+include = ["backend*"]
+exclude = ["data*", "tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
