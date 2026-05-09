@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState, type ClipboardEvent, type DragEvent } from 'react'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
+  Add01Icon,
   AiMagicIcon,
   BookOpen02Icon,
+  Cancel01Icon,
   ImageUploadIcon,
   Menu03Icon,
   QuillWrite01Icon,
@@ -17,6 +19,142 @@ import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
+
+type PreviewOverlayProps = {
+  activePreviewIndex: number
+  attachedImages: File[]
+  imageUrls: string[]
+  isClosing: boolean
+  onClose: () => void
+  onAddImages: () => void
+  onRemoveImage: (index: number) => void
+  onSelectImage: (index: number) => void
+  onSend: () => void
+}
+
+function PreviewOverlay({
+  activePreviewIndex,
+  attachedImages,
+  imageUrls,
+  isClosing,
+  onAddImages,
+  onClose,
+  onRemoveImage,
+  onSelectImage,
+  onSend,
+}: PreviewOverlayProps) {
+  const activeImage = attachedImages[activePreviewIndex]
+  const activeImageUrl = imageUrls[activePreviewIndex]
+
+  return (
+    <div
+      className={cn(
+        'absolute inset-0 z-20 flex flex-col overflow-hidden rounded-b-2xl border-t border-primary/20 bg-[radial-gradient(circle_at_center,oklch(0.43_0.04_75_/_0.35),transparent_58%),linear-gradient(135deg,oklch(0.18_0.014_72_/_0.96),oklch(0.12_0.01_68_/_0.98))] text-foreground shadow-2xl shadow-black/40 backdrop-blur-md transition-[opacity,transform,filter] duration-300 ease-out',
+        isClosing ? 'scale-[0.985] opacity-0 blur-sm' : 'scale-100 opacity-100 blur-0',
+      )}
+    >
+      <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(90deg,oklch(0.86_0.06_82_/_0.05)_1px,transparent_1px),linear-gradient(oklch(0.86_0.06_82_/_0.04)_1px,transparent_1px)] [background-size:18px_18px]" />
+
+      <div className="relative flex items-center justify-center border-b border-primary/15 px-4 py-4 sm:px-6">
+        <Button
+          aria-label="Close image preview"
+          className="absolute left-4 size-10 border-primary/25 bg-background/70 text-primary shadow-lg shadow-black/20 hover:bg-primary/15 sm:left-6"
+          onClick={onClose}
+          size="icon"
+          type="button"
+          variant="outline"
+        >
+          <HugeiconsIcon icon={Cancel01Icon} size={21} strokeWidth={1.9} />
+        </Button>
+        <p className="font-heading text-center text-sm tracking-[0.24em] text-primary uppercase sm:text-base">
+          Present Image to the Codex
+        </p>
+      </div>
+
+      <div className="relative flex min-h-0 flex-1 items-center justify-center p-5 sm:p-8">
+        <div className="absolute inset-x-8 top-8 bottom-8 rounded-[2rem] border border-primary/10 bg-background/15 shadow-inner shadow-black/40" />
+        {activeImage && activeImageUrl ? (
+          <img
+            alt={activeImage.name}
+            className="relative max-h-full max-w-full rounded-2xl border border-primary/25 bg-card object-contain p-1 shadow-2xl shadow-black/45"
+            src={activeImageUrl}
+          />
+        ) : (
+          <div className="relative grid min-h-64 w-full max-w-2xl place-items-center rounded-2xl border border-dashed border-primary/35 bg-card/45 p-8 text-center shadow-2xl shadow-black/35">
+            <div>
+              <HugeiconsIcon className="mx-auto text-primary" icon={ImageUploadIcon} size={40} />
+              <p className="mt-4 font-heading text-lg tracking-[0.18em] text-primary uppercase">
+                Release Screenshot
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                The Codex will reveal the image preview when your browser provides the file.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="relative flex items-center justify-center gap-3 border-t border-primary/15 bg-card/70 px-4 py-4 backdrop-blur sm:px-6">
+        <div className="flex max-w-full items-center gap-3 overflow-x-auto rounded-2xl border border-border bg-background/70 p-2 shadow-inner shadow-black/20">
+          {attachedImages.map((image, index) => (
+            <div
+              className={cn(
+                'group relative size-16 shrink-0 overflow-hidden rounded-xl border bg-card shadow-sm shadow-black/20 transition-all duration-300 ease-out',
+                index === activePreviewIndex
+                  ? 'border-primary ring-2 ring-primary/45'
+                  : 'border-primary/30 hover:border-primary/70',
+              )}
+              key={`${image.name}-${image.lastModified}-${index}`}
+            >
+              <button
+                aria-label={`Preview ${image.name}`}
+                className="grid size-full place-items-center transition-transform duration-300 group-hover:scale-105"
+                onClick={() => onSelectImage(index)}
+                type="button"
+              >
+                {imageUrls[index] ? (
+                  <img alt={image.name} className="size-full object-cover" src={imageUrls[index]} />
+                ) : (
+                  <HugeiconsIcon className="text-primary/75" icon={ImageUploadIcon} size={23} />
+                )}
+              </button>
+              <button
+                aria-label={`Remove ${image.name}`}
+                className="absolute top-1 right-1 grid size-5 place-items-center rounded-full border border-primary/30 bg-background/90 text-primary opacity-90 shadow-sm shadow-black/25 transition duration-200 hover:border-destructive/70 hover:bg-destructive hover:text-destructive-foreground group-hover:scale-105"
+                onClick={(event) => {
+                  event.stopPropagation()
+                  onRemoveImage(index)
+                }}
+                type="button"
+              >
+                <HugeiconsIcon icon={Cancel01Icon} size={13} strokeWidth={2.2} />
+              </button>
+            </div>
+          ))}
+          <button
+            aria-label="Add more images"
+            className="grid size-16 shrink-0 place-items-center rounded-xl border border-dashed border-primary/40 bg-primary/10 text-primary transition hover:border-primary hover:bg-primary/20"
+            onClick={onAddImages}
+            type="button"
+          >
+            <HugeiconsIcon icon={Add01Icon} size={24} strokeWidth={1.8} />
+          </button>
+        </div>
+
+        <Button
+          aria-label="Send image preview"
+          className="size-12 shrink-0 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90"
+          disabled={attachedImages.length === 0}
+          onClick={onSend}
+          size="icon"
+          type="button"
+        >
+          <HugeiconsIcon icon={QuillWrite01Icon} size={22} strokeWidth={1.9} />
+        </Button>
+      </div>
+    </div>
+  )
+}
 
 const chats = [
   'Dwemer ruins and tonal locks',
@@ -47,6 +185,155 @@ const messages = [
 
 export function SkyrimChatShell() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [prompt, setPrompt] = useState('')
+  const [attachedImages, setAttachedImages] = useState<File[]>([])
+  const [attachedImageUrls, setAttachedImageUrls] = useState<string[]>([])
+  const [activePreviewIndex, setActivePreviewIndex] = useState(0)
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false)
+  const [isOverlayClosing, setIsOverlayClosing] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const attachedImageUrlsRef = useRef<string[]>([])
+  const overlayCloseTimerRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (overlayCloseTimerRef.current) {
+        window.clearTimeout(overlayCloseTimerRef.current)
+      }
+
+      attachedImageUrlsRef.current.forEach((imageUrl) => URL.revokeObjectURL(imageUrl))
+    }
+  }, [])
+
+  const clearAttachedImages = () => {
+    attachedImageUrlsRef.current.forEach((imageUrl) => URL.revokeObjectURL(imageUrl))
+    attachedImageUrlsRef.current = []
+    setAttachedImages([])
+    setAttachedImageUrls([])
+    setActivePreviewIndex(0)
+  }
+
+  const closeImagePreview = () => {
+    setIsOverlayClosing(true)
+
+    if (overlayCloseTimerRef.current) {
+      window.clearTimeout(overlayCloseTimerRef.current)
+    }
+
+    overlayCloseTimerRef.current = window.setTimeout(() => {
+      clearAttachedImages()
+      setIsOverlayVisible(false)
+      setIsOverlayClosing(false)
+      overlayCloseTimerRef.current = null
+    }, 260)
+  }
+
+  const addImageFiles = (files: FileList | File[]) => {
+    const imageFiles = Array.from(files).filter((file) => file.type.startsWith('image/'))
+
+    if (imageFiles.length === 0) {
+      return false
+    }
+
+    const nextImageUrls = imageFiles.map((file) => URL.createObjectURL(file))
+
+    if (overlayCloseTimerRef.current) {
+      window.clearTimeout(overlayCloseTimerRef.current)
+      overlayCloseTimerRef.current = null
+    }
+
+    attachedImageUrlsRef.current = [...attachedImageUrlsRef.current, ...nextImageUrls]
+    setAttachedImageUrls((currentImageUrls) => [...currentImageUrls, ...nextImageUrls])
+
+    setAttachedImages((currentImages) => {
+      const nextImages = [...currentImages, ...imageFiles]
+
+      if (currentImages.length === 0) {
+        setActivePreviewIndex(0)
+      }
+
+      return nextImages
+    })
+    setIsOverlayClosing(false)
+    setIsOverlayVisible(true)
+    return true
+  }
+
+  const removeAttachedImage = (imageIndex: number) => {
+    const removedImageUrl = attachedImageUrlsRef.current[imageIndex]
+    const nextImages = attachedImages.filter((_, index) => index !== imageIndex)
+    const nextImageUrls = attachedImageUrlsRef.current.filter((_, index) => index !== imageIndex)
+
+    if (removedImageUrl) {
+      URL.revokeObjectURL(removedImageUrl)
+    }
+
+    attachedImageUrlsRef.current = nextImageUrls
+    setAttachedImages(nextImages)
+    setAttachedImageUrls(nextImageUrls)
+
+    if (nextImages.length === 0) {
+      closeImagePreview()
+      return
+    }
+
+    if (imageIndex === activePreviewIndex) {
+      setActivePreviewIndex(Math.min(imageIndex, nextImages.length - 1))
+      return
+    }
+
+    if (imageIndex < activePreviewIndex) {
+      setActivePreviewIndex(activePreviewIndex - 1)
+    }
+  }
+
+  const handlePasteImages = (event: ClipboardEvent<HTMLInputElement | HTMLDivElement>) => {
+    const imageFiles = Array.from(event.clipboardData.files).filter((file) =>
+      file.type.startsWith('image/'),
+    )
+
+    if (imageFiles.length > 0) {
+      addImageFiles(imageFiles)
+    }
+  }
+
+  const handleMainChatDragOver = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+
+    if (event.dataTransfer.types.includes('Files')) {
+      setIsOverlayVisible(true)
+    }
+  }
+
+  const handleMainChatDragLeave = (event: DragEvent<HTMLDivElement>) => {
+    const nextTarget = event.relatedTarget
+
+    if (nextTarget instanceof Node && event.currentTarget.contains(nextTarget)) {
+      return
+    }
+
+    if (attachedImages.length === 0) {
+      closeImagePreview()
+    }
+  }
+
+  const handleMainChatDrop = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+
+    if (!addImageFiles(event.dataTransfer.files) && attachedImages.length === 0) {
+      closeImagePreview()
+    }
+  }
+
+  const handleSubmit = () => {
+    setPrompt('')
+  }
+
+  const handleOverlaySend = () => {
+    // Future backend submission will receive `attachedImages` after upload integration exists.
+    void attachedImages
+    closeImagePreview()
+  }
 
   return (
     <main className="min-h-dvh overflow-hidden bg-background text-foreground">
@@ -125,7 +412,13 @@ export function SkyrimChatShell() {
             </div>
           </header>
 
-          <ScrollArea className="min-h-0 flex-1">
+          <ScrollArea
+            className="min-h-0 flex-1"
+            onDragLeave={handleMainChatDragLeave}
+            onDragOver={handleMainChatDragOver}
+            onDrop={handleMainChatDrop}
+            onPaste={handlePasteImages}
+          >
             <div className="mx-auto flex w-full max-w-4xl flex-col gap-5 px-4 py-6 sm:px-8 lg:py-10">
               <Card className="border-primary/20 bg-card/75 p-5 shadow-lg shadow-primary/5 sm:p-7">
                 <div className="flex gap-4">
@@ -181,27 +474,62 @@ export function SkyrimChatShell() {
                 </article>
               ))}
             </div>
+            {isOverlayVisible && (
+              <PreviewOverlay
+                activePreviewIndex={activePreviewIndex}
+                attachedImages={attachedImages}
+                imageUrls={attachedImageUrls}
+                isClosing={isOverlayClosing}
+                onAddImages={() => fileInputRef.current?.click()}
+                onClose={closeImagePreview}
+                onRemoveImage={removeAttachedImage}
+                onSelectImage={setActivePreviewIndex}
+                onSend={handleOverlaySend}
+              />
+            )}
           </ScrollArea>
 
           <footer className="border-t border-border bg-card/90 p-3 sm:p-5">
             <div className="mx-auto max-w-4xl">
               <Card className="overflow-hidden border-primary/20 bg-background/85 p-3 shadow-xl shadow-black/10">
-                <div className="mb-3 flex items-center gap-3 rounded-xl border border-dashed border-primary/35 bg-primary/10 px-4 py-3 text-primary">
-                  <HugeiconsIcon icon={ImageUploadIcon} size={22} />
-                  <div className="min-w-0">
-                    <p className="text-sm font-medium">Image-ready prompt space</p>
-                    <p className="truncate text-xs text-primary/75">
-                      Drag and drop screenshots, paste images, or attach references later.
-                    </p>
-                  </div>
-                </div>
                 <div className="flex items-center gap-2">
+                  <input
+                    accept="image/*"
+                    className="sr-only"
+                    multiple
+                    onChange={(event) => {
+                      if (event.target.files) {
+                        addImageFiles(event.target.files)
+                      }
+
+                      event.target.value = ''
+                    }}
+                    ref={fileInputRef}
+                    type="file"
+                  />
+                  <Button
+                    aria-label="Attach screenshot"
+                    className="h-12 border-primary/25 bg-primary/10 text-primary hover:bg-primary/20"
+                    onClick={() => fileInputRef.current?.click()}
+                    size="icon"
+                    type="button"
+                    variant="outline"
+                  >
+                    <HugeiconsIcon icon={ImageUploadIcon} size={21} />
+                  </Button>
                   <Input
                     aria-label="Ask about Skyrim"
                     className="h-12 border-border bg-muted/60 px-4 text-base placeholder:text-muted-foreground/70"
+                    onChange={(event) => setPrompt(event.target.value)}
+                    onPaste={handlePasteImages}
                     placeholder="Ask about a quest, hold, artifact, creature, or book..."
+                    value={prompt}
                   />
-                  <Button className="h-12 gap-2 bg-primary px-4 text-primary-foreground hover:bg-primary/90 sm:px-5">
+                  <Button
+                    className="h-12 gap-2 bg-primary px-4 text-primary-foreground hover:bg-primary/90 sm:px-5"
+                    onClick={handleSubmit}
+                    type="button"
+                  >
                     <HugeiconsIcon icon={SentIcon} size={20} />
                     <span className="hidden sm:inline">Send</span>
                   </Button>
