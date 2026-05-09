@@ -108,6 +108,30 @@ O `bge-m3` pode falhar no Ollama com Flash Attention ligado. Configure uma vez:
 
 Depois encerre o Ollama pelo tray e abra de novo.
 
+## Baixando o Dify
+
+O Dify fica em `infra/dify` como submodulo Git apontando para o repositorio
+oficial `https://github.com/langgenius/dify.git`. Isso baixa o mesmo codigo do
+Dify usado pelo projeto, no commit fixado pela branch.
+
+Depois de clonar ou atualizar a branch, rode:
+
+```powershell
+git pull
+git submodule sync --recursive
+git submodule update --init --recursive
+```
+
+Se for clonar o projeto do zero, tambem pode usar:
+
+```powershell
+git clone --recurse-submodules https://github.com/UxUchoa/Skyrim_Copilot.git
+```
+
+Importante: o submodulo baixa somente o codigo do Dify. Ele nao baixa os dados
+locais da sua instancia, como documentos enviados, Knowledge, usuarios, apps,
+conversas, banco, vetores ou arquivos `.env`.
+
 ## Configurando o Dify
 
 Suba o Dify primeiro:
@@ -219,6 +243,47 @@ DIFY_API_KEY=app-sua-chave-aqui
 ```
 
 Reinicie o backend depois de editar `.env`.
+
+## Dados Locais do Dify
+
+Os documentos enviados para a Knowledge do Dify nao ficam no Git. Eles ficam nos
+volumes locais do Docker, dentro de:
+
+```text
+infra/dify/docker/volumes
+```
+
+Pastas principais:
+
+- `infra/dify/docker/volumes/app/storage`: arquivos enviados/uploadados.
+- `infra/dify/docker/volumes/db/data`: banco Postgres com usuarios, apps,
+  datasets, metadados e configuracoes.
+- `infra/dify/docker/volumes/weaviate`: vetores/indices dos documentos, quando
+  o `VECTOR_STORE` padrao `weaviate` esta sendo usado.
+
+Para outra maquina ter a mesma instancia local do Dify, pare o Dify antes de
+copiar:
+
+```powershell
+cd infra/dify/docker
+docker compose down
+```
+
+Depois copie a pasta inteira:
+
+```text
+infra/dify/docker/volumes
+```
+
+Na outra maquina, coloque essa pasta no mesmo caminho e suba o Dify:
+
+```powershell
+cd infra/dify/docker
+docker compose up -d
+```
+
+Atencao: copiar `volumes` leva dados privados junto, incluindo usuarios,
+senhas locais, apps, API keys configuradas, historico, documentos e indices.
 
 ## Rodando o Projeto
 
