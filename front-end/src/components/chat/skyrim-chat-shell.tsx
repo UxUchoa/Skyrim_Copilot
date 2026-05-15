@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { type FormEvent, useEffect, useRef, useState } from 'react'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
   AiMagicIcon,
@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { streamChat, type ChatFilePayload, type UploadedFileResponse, uploadImage } from '@/lib/skyrim-api'
 import { cn } from '@/lib/utils'
 
 const chats = [
@@ -25,28 +26,169 @@ const chats = [
   'College of Winterhold lore',
 ]
 
-const messages = [
+type ChatMessage = {
+  id: string
+  role: 'assistant' | 'user'
+  title: string
+  content: string
+  files?: UploadedFileResponse[]
+  status?: 'streaming' | 'error'
+}
+
+const INITIAL_MESSAGES: ChatMessage[] = [
   {
+    id: 'welcome',
     role: 'assistant',
     title: 'Skyrim Codex',
     content:
       'Ask about factions, quests, alchemy, artifacts, regions, or obscure book lore. I will answer like a living archive of Tamrielic knowledge.',
   },
-  {
-    role: 'user',
-    title: 'Dragonborn',
-    content: 'What should I know before entering Blackreach for the first time?',
-  },
-  {
-    role: 'assistant',
-    title: 'Skyrim Codex',
-    content:
-      'Carry cure disease potions, resist poison, and a strong light source. Blackreach is vast, vertical, and rich with Falmer paths, crimson nirnroot, and hidden Dwemer machinery.',
-  },
 ]
+
+const CHAT_USER = 'lucas'
 
 export function SkyrimChatShell() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [messages, setMessages] = useState<ChatMessage[]>(INITIAL_MESSAGES)
+  const [input, setInput] = useState('')
+  const [conversationId, setConversationId] = useState<string | null>(null)
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFileResponse[]>([])
+  const [isSending, setIsSending] = useState(false)
+  const [isUploading, setIsUploading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
+  const messagesEndRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
+  }, [messages])
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const query = input.trim()
+    if (!query || isSending || isUploading) return
+
+    const filesForRequest = uploadedFiles.map(toChatFilePayload)
+    const userMessageId = crypto.randomUUID()
+    const assistantMessageId = crypto.randomUUID()
+
+    setError(null)
+    setInput('')
+    setUploadedFiles([])
+    setIsSending(true)
+    setMessages((currentMessages) => [
+      ...currentMessages,
+      {
+        id: userMessageId,
+        role: 'user',
+        title: 'Dragonborn',
+        content: query,
+        files: uploadedFiles,
+      },
+      {
+        id: assistantMessageId,
+        role: 'assistant',
+        title: 'Skyrim Codex',
+        content: '',
+        status: 'streaming',
+      },
+    ])
+
+    try {
+      await streamChat(
+        {
+          query,
+          conversation_id: conversationId,
+          user: CHAT_USER,
+          files: filesForRequest,
+        },
+        {
+          onConversationId: (nextConversationId) => {
+            setConversationId(nextConversationId)
+          },
+          onMessage: (chunk, nextConversationId) => {
+            if (nextConversationId) {
+              setConversationId(nextConversationId)
+            }
+
+            setMessages((currentMessages) =>
+              currentMessages.map((message) =>
+                message.id === assistantMessageId
+                  ? { ...message, content: message.content + chunk }
+                  : message,
+              ),
+            )
+          },
+          onEnd: (nextConversationId) => {
+            if (nextConversationId) {
+              setConversationId(nextConversationId)
+            }
+          },
+        },
+      )
+
+      setMessages((currentMessages) =>
+        currentMessages.map((message) =>
+          message.id === assistantMessageId
+            ? {
+                ...message,
+                content: message.content || 'No answer was returned by the archive.',
+                status: undefined,
+              }
+            : message,
+        ),
+      )
+    } catch (streamError) {
+      const message = streamError instanceof Error ? streamError.message : 'Chat stream failed.'
+      setError(message)
+      setMessages((currentMessages) =>
+        currentMessages.map((chatMessage) =>
+          chatMessage.id === assistantMessageId
+            ? {
+                ...chatMessage,
+                content: message,
+                status: 'error',
+              }
+            : chatMessage,
+        ),
+      )
+    } finally {
+      setIsSending(false)
+    }
+  }
+
+  async function handleFileSelected(file: File | undefined) {
+    if (!file) return
+
+    if (!file.type.startsWith('image/')) {
+      setError('Only image uploads are supported.')
+      return
+    }
+
+    setError(null)
+    setIsUploading(true)
+
+    try {
+      const uploaded = await uploadImage(file, CHAT_USER)
+      setUploadedFiles((currentFiles) => [...currentFiles, uploaded])
+    } catch (uploadError) {
+      setError(uploadError instanceof Error ? uploadError.message : 'Image upload failed.')
+    } finally {
+      setIsUploading(false)
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''
+      }
+    }
+  }
+
+  function clearConversation() {
+    setMessages(INITIAL_MESSAGES)
+    setInput('')
+    setConversationId(null)
+    setUploadedFiles([])
+    setError(null)
+  }
 
   return (
     <main className="min-h-dvh overflow-hidden bg-background text-foreground">
@@ -74,6 +216,8 @@ export function SkyrimChatShell() {
           <div className="p-3">
             <Button
               className="h-11 w-full justify-start gap-3 border-primary/25 bg-primary/15 text-primary hover:bg-primary/25"
+              onClick={clearConversation}
+              type="button"
               variant="outline"
             >
               <HugeiconsIcon icon={ScrollIcon} size={19} />
@@ -106,6 +250,7 @@ export function SkyrimChatShell() {
                 className="text-muted-foreground hover:text-foreground"
                 onClick={() => setSidebarOpen((open) => !open)}
                 size="icon"
+                type="button"
                 variant="ghost"
               >
                 <HugeiconsIcon icon={Menu03Icon} size={22} />
@@ -121,7 +266,7 @@ export function SkyrimChatShell() {
             </div>
             <div className="hidden items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground sm:flex">
               <HugeiconsIcon icon={AiMagicIcon} size={16} />
-              UI prototype only
+              {conversationId ? 'Context linked' : 'New conversation'}
             </div>
           </header>
 
@@ -150,7 +295,7 @@ export function SkyrimChatShell() {
                     'flex gap-3 sm:gap-4',
                     message.role === 'user' && 'flex-row-reverse',
                   )}
-                  key={`${message.role}-${message.content}`}
+                  key={message.id}
                 >
                   <div
                     className={cn(
@@ -176,36 +321,86 @@ export function SkyrimChatShell() {
                     <p className="font-heading text-sm tracking-[0.12em] text-foreground uppercase">
                       {message.title}
                     </p>
-                    <p className="mt-2 text-sm text-muted-foreground sm:text-base">{message.content}</p>
+                    {message.files?.length ? (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {message.files.map((file) => (
+                          <span
+                            className="rounded-lg border border-primary/20 bg-primary/10 px-2.5 py-1 text-xs text-primary"
+                            key={file.upload_file_id}
+                          >
+                            {file.name ?? 'Uploaded image'}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                    <p
+                      className={cn(
+                        'mt-2 whitespace-pre-wrap text-sm text-muted-foreground sm:text-base',
+                        message.status === 'error' && 'text-destructive',
+                      )}
+                    >
+                      {message.content}
+                      {message.status === 'streaming' && (
+                        <span className="ml-1 inline-block animate-pulse text-primary">|</span>
+                      )}
+                    </p>
                   </Card>
                 </article>
               ))}
+              <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
 
           <footer className="border-t border-border bg-card/90 p-3 sm:p-5">
             <div className="mx-auto max-w-4xl">
               <Card className="overflow-hidden border-primary/20 bg-background/85 p-3 shadow-xl shadow-black/10">
-                <div className="mb-3 flex items-center gap-3 rounded-xl border border-dashed border-primary/35 bg-primary/10 px-4 py-3 text-primary">
+                <button
+                  className="mb-3 flex w-full items-center gap-3 rounded-xl border border-dashed border-primary/35 bg-primary/10 px-4 py-3 text-left text-primary transition hover:bg-primary/15 disabled:cursor-not-allowed disabled:opacity-70"
+                  disabled={isSending || isUploading}
+                  onClick={() => fileInputRef.current?.click()}
+                  type="button"
+                >
                   <HugeiconsIcon icon={ImageUploadIcon} size={22} />
                   <div className="min-w-0">
-                    <p className="text-sm font-medium">Image-ready prompt space</p>
+                    <p className="text-sm font-medium">
+                      {isUploading
+                        ? 'Uploading image...'
+                        : uploadedFiles.length
+                          ? `${uploadedFiles.length} image${uploadedFiles.length > 1 ? 's' : ''} attached`
+                          : 'Attach image'}
+                    </p>
                     <p className="truncate text-xs text-primary/75">
-                      Drag and drop screenshots, paste images, or attach references later.
+                      {uploadedFiles.map((file) => file.name ?? 'Uploaded image').join(', ') ||
+                        'Screenshots are uploaded before the next message.'}
                     </p>
                   </div>
-                </div>
-                <div className="flex items-center gap-2">
+                </button>
+                <input
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(event) => handleFileSelected(event.target.files?.[0])}
+                  ref={fileInputRef}
+                  type="file"
+                />
+                <form className="flex items-center gap-2" onSubmit={handleSubmit}>
                   <Input
                     aria-label="Ask about Skyrim"
                     className="h-12 border-border bg-muted/60 px-4 text-base placeholder:text-muted-foreground/70"
+                    disabled={isSending}
+                    onChange={(event) => setInput(event.target.value)}
                     placeholder="Ask about a quest, hold, artifact, creature, or book..."
+                    value={input}
                   />
-                  <Button className="h-12 gap-2 bg-primary px-4 text-primary-foreground hover:bg-primary/90 sm:px-5">
+                  <Button
+                    className="h-12 gap-2 bg-primary px-4 text-primary-foreground hover:bg-primary/90 sm:px-5"
+                    disabled={!input.trim() || isSending || isUploading}
+                    type="submit"
+                  >
                     <HugeiconsIcon icon={SentIcon} size={20} />
-                    <span className="hidden sm:inline">Send</span>
+                    <span className="hidden sm:inline">{isSending ? 'Sending' : 'Send'}</span>
                   </Button>
-                </div>
+                </form>
+                {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
               </Card>
             </div>
           </footer>
@@ -213,4 +408,12 @@ export function SkyrimChatShell() {
       </div>
     </main>
   )
+}
+
+function toChatFilePayload(file: UploadedFileResponse): ChatFilePayload {
+  return {
+    upload_file_id: file.upload_file_id,
+    type: 'image',
+    transfer_method: 'local_file',
+  }
 }

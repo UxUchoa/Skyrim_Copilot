@@ -10,7 +10,28 @@ from backend.api.settings import get_settings
 
 def create_app() -> FastAPI:
     settings = get_settings()
-    app = FastAPI(title="Skyrim Copilot API", version="0.1.0")
+    app = FastAPI(
+        title="Skyrim Copilot API",
+        version="0.1.0",
+        description=(
+            "Local FastAPI proxy for the Skyrim Copilot frontend. The frontend "
+            "must call this API only; Dify credentials stay in the backend .env."
+        ),
+        openapi_tags=[
+            {
+                "name": "chat",
+                "description": "Streaming chat endpoint backed by the Dify app.",
+            },
+            {
+                "name": "files",
+                "description": "Image upload endpoint that returns Dify file ids.",
+            },
+            {
+                "name": "health",
+                "description": "Runtime configuration and readiness checks.",
+            },
+        ],
+    )
 
     app.add_middleware(
         CORSMiddleware,
@@ -23,7 +44,16 @@ def create_app() -> FastAPI:
     app.include_router(files.router, prefix="/api")
     app.include_router(chat.router, prefix="/api")
 
-    @app.get("/api/health", response_model=HealthResponse)
+    @app.get(
+        "/api/health",
+        response_model=HealthResponse,
+        tags=["health"],
+        summary="Check backend and Dify configuration",
+        description=(
+            "Returns local backend status and the Dify/Ollama settings loaded "
+            "from the backend environment."
+        ),
+    )
     async def health() -> HealthResponse:
         current_settings = get_settings()
         return HealthResponse(

@@ -9,10 +9,31 @@ from backend.api.settings import ApiSettings, get_settings
 router = APIRouter(tags=["files"])
 
 
-@router.post("/files/upload", response_model=UploadedFileResponse)
+@router.post(
+    "/files/upload",
+    response_model=UploadedFileResponse,
+    summary="Upload an image to Dify",
+    description=(
+        "Uploads an image using multipart/form-data and returns a Dify file id. "
+        "Send the returned `upload_file_id` in `files[]` when calling "
+        "`POST /api/chat/stream`."
+    ),
+    responses={
+        413: {"description": "Uploaded file exceeds DIFY_MAX_UPLOAD_BYTES."},
+        415: {"description": "Only image/* uploads are supported."},
+        502: {"description": "Dify returned an error while uploading the file."},
+        503: {"description": "DIFY_API_KEY is missing or Dify is not configured."},
+    },
+)
 async def upload_file(
-    file: UploadFile = File(...),
-    user: str | None = Form(default=None),
+    file: UploadFile = File(
+        ...,
+        description="Image file to upload. Supported MIME types start with image/.",
+    ),
+    user: str | None = Form(
+        default=None,
+        description="Optional user id sent to Dify. Defaults to DIFY_DEFAULT_USER.",
+    ),
     settings: ApiSettings = Depends(get_settings),
 ) -> UploadedFileResponse:
     mime_type = file.content_type or "application/octet-stream"

@@ -19,7 +19,34 @@ def encode_sse(event: str, data: dict[str, Any]) -> str:
     return f"event: {event}\ndata: {payload}\n\n"
 
 
-@router.post("/chat/stream")
+@router.post(
+    "/chat/stream",
+    summary="Stream a Skyrim Copilot chat response",
+    description=(
+        "Sends a user query to the Dify chatbot app and returns Server-Sent "
+        "Events. Use `conversation_id: null` for the first message, then reuse "
+        "the emitted conversation id to continue the chat. Swagger may buffer "
+        "SSE responses; `curl.exe -N` is better for seeing token-by-token output."
+    ),
+    responses={
+        200: {
+            "description": "SSE stream with normalized Skyrim Copilot events.",
+            "content": {
+                "text/event-stream": {
+                    "example": (
+                        'event: conversation_id\n'
+                        'data: {"conversation_id":"conv-123"}\n\n'
+                        'event: agent_message\n'
+                        'data: {"answer":"Os Greybeards","conversation_id":"conv-123","message_id":"msg-123"}\n\n'
+                        'event: message_end\n'
+                        'data: {"conversation_id":"conv-123","message_id":"msg-123","metadata":{}}\n\n'
+                    )
+                }
+            },
+        },
+        503: {"description": "DIFY_API_KEY is missing or Dify is not configured."},
+    },
+)
 async def chat_stream(
     request: ChatStreamRequest,
     settings: ApiSettings = Depends(get_settings),
